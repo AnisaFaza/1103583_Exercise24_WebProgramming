@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Circle Properties Calculator</h2>
+    <label for="radius">Enter the radius of the circle:</label>
+    <input type="number" id="radius" placeholder="radius" step="any">
+    <button onclick="CalculateCircleProperties()">Calculate</button>
+
+    <h3>Result :</h3>
+    <p id="Result">The circumference is </p>
+    <p id="area">The area is </p>
+
+    <script>
+        // Function to calculate and display the circumference
+        function calculateCircumference(radius) {
+            const circumference = 2 * Math.PI * radius;
+            return circumference.toFixed(2);
+        }
+    
+        // Function to calculate and display the area
+        function area(radius) {
+            const areaValue = Math.PI * Math.pow(radius, 2);
+            return areaValue.toFixed(2);
+        }
+    
+        // Function to handle user input and update result
+        function CalculateCircleProperties() {
+            const radius = parseFloat(document.getElementById('radius').value);
+            if (isNaN(radius) || radius <= 0) {
+                alert('Please enter a valid positive number for the radius');
+                return;
+            }
+    
+            const circumference = calculateCircumference(radius);
+            const areaValue = area(radius);
+    
+            document.getElementById('Result').textContent = `The circumference is: ${circumference}`;
+            document.getElementById('area').textContent = `The area is: ${areaValue}`;
+        }
+    </script>
+</body>
+</html>
